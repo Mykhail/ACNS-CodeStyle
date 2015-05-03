@@ -1054,14 +1054,23 @@
 
 ## jQuery
 
-  - Prefix jQuery object variables with a `$`.
-
-    ```javascript
+  - Use "jQuery" instead "$"
+  ```javascript
     // bad
     var sidebar = $('.sidebar');
 
     // good
-    var $sidebar = $('.sidebar');
+    var $sidebar = jQuery('.sidebar');
+    ```
+
+  - Prefix jQuery object variables with a `$`.
+
+    ```javascript
+    // bad
+    var sidebar = jQuery('.sidebar');
+
+    // good
+    var $sidebar = jQuery('.sidebar');
     ```
 
   - Cache jQuery lookups.
@@ -1069,18 +1078,18 @@
     ```javascript
     // bad
     function setSidebar() {
-      $('.sidebar').hide();
+      jQuery('.sidebar').hide();
 
       // ...stuff...
 
-      $('.sidebar').css({
+     jQuery('.sidebar').css({
         'background-color': 'pink'
       });
     }
 
     // good
     function setSidebar() {
-      var $sidebar = $('.sidebar');
+      var $sidebar = jQuery('.sidebar');
       $sidebar.hide();
 
       // ...stuff...
@@ -1091,21 +1100,21 @@
     }
     ```
 
-  - For DOM queries use Cascading `$('.sidebar ul')` or parent > child `$('.sidebar > ul')`. [jsPerf](http://jsperf.com/jquery-find-vs-context-sel/16)
+  - For DOM queries use Cascading `jQuery('.sidebar ul')` or parent > child `jQuery('.sidebar > ul')`. [jsPerf](http://jsperf.com/jquery-find-vs-context-sel/16)
   - Use `find` with scoped jQuery object queries.
 
     ```javascript
     // bad
-    $('ul', '.sidebar').hide();
+    jQuery('ul', '.sidebar').hide();
 
     // bad
-    $('.sidebar').find('ul').hide();
+    jQuery('.sidebar').find('ul').hide();
 
     // good
-    $('.sidebar ul').hide();
+    jQuery('.sidebar ul').hide();
 
     // good
-    $('.sidebar > ul').hide();
+    jQuery('.sidebar > ul').hide();
 
     // good
     $sidebar.find('ul').hide();
@@ -1149,6 +1158,7 @@
 
 ###NS Best Practices
   - Use utf-8 for templates.
+  - 
 **[⬆ back to top](#table-of-contents)**
 
 ## License
