@@ -2,7 +2,7 @@
 
 # ACNS JavaScript Style Guide() {
 
-*Good codestyle increase your testosterone level*
+*Good codestyle gives you superpower!*
 
 
 ## Table of Contents
