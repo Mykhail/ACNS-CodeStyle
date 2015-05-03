@@ -51,41 +51,41 @@
 
     ```javascript
     // bad
-    var items = getItems(),
-        goSportsTeam = true,
-        dragonball = 'z';
+    var avengersList = getAvengers(),
+        superhuman = true,
+        name = 'Iron Man';
 
     // bad
     // (compare to above, and try to spot the mistake)
-    var items = getItems(),
-        goSportsTeam = true;
-        dragonball = 'z';
+    var avengersList = getAvengers(),
+        superhuman = true;
+        name = 'Iron Man';
 
     // good
-    var items = getItems();
-    var goSportsTeam = true;
-    var dragonball = 'z';
+    var avengersList = getAvengers();
+    var superhuman = true;
+    var name = 'Iron Man';
     ```
 
   - Declare unassigned variables last. This is helpful when later on you might need to assign a variable depending on one of the previous assigned variables.
 
     ```javascript
     // bad
-    var i, len, dragonball,
-        items = getItems(),
-        goSportsTeam = true;
+    var i, len, avengerName,
+        avengersList = getAvengers(),
+        superhuman = true;
 
     // bad
     var i;
-    var items = getItems();
-    var dragonball;
-    var goSportsTeam = true;
+    var avengersList = getAvengers();
+    var avengerName;
+    var superhuman = true;
     var len;
 
     // good
-    var items = getItems();
-    var goSportsTeam = true;
-    var dragonball;
+    var avengersList = getAvengers();
+    var superhuman = true;
+    var avengerName;
     var length;
     var i;
     ```
@@ -96,29 +96,29 @@
     // bad
     function() {
       test();
-      console.log('doing stuff..');
+      console.log('Age of Ultron');
 
       //..other stuff..
 
-      var name = getName();
+      var avengerName = getAvengerName();
 
-      if (name === 'test') {
+      if (avengerName === 'Captain America') {
         return false;
       }
 
-      return name;
+      return avengerName;
     }
 
     // good
     function() {
-      var name = getName();
+      var avengerName = getAvengerName();
 
       test();
-      console.log('doing stuff..');
+      console.log('Age of Ultron');
 
       //..other stuff..
 
-      if (name === 'test') {
+      if (avengerName === 'Captain America') {
         return false;
       }
 
@@ -137,24 +137,24 @@
 
     ```javascript
     // bad
-    var item = new Object();
+    var avenger = new Object();
 
     // good
-    var item = {};
+    var avenger = {};
     ```
 
   - Don't use [reserved words](http://es5.github.io/#x7.6.1) as keys. It won't work in IE8. [More info](https://github.com/airbnb/javascript/issues/61).
 
     ```javascript
     // bad
-    var superman = {
-      default: { clark: 'kent' },
+    var hulk = {
+      default: { name: 'Dr. Bruce Banner' },
       private: true
     };
 
     // good
-    var superman = {
-      defaults: { clark: 'kent' },
+    var hulk = {
+      defaults: { name: 'Dr. Bruce Banner' },
       hidden: true
     };
     ```
@@ -163,18 +163,18 @@
 
     ```javascript
     // bad
-    var superman = {
-      class: 'alien'
+    var hulk = {
+      class: 'creature'
     };
 
     // bad
-    var superman = {
-      klass: 'alien'
+    var hulk = {
+      klass: 'creature'
     };
 
     // good
-    var superman = {
-      type: 'alien'
+    var hulk = {
+      type: 'creature'
     };
     ```
 
@@ -186,39 +186,39 @@
 
     ```javascript
     // bad
-    var items = new Array();
+    var avengers = new Array();
 
     // good
-    var items = [];
+    var avengers = [];
     ```
 
   - Use Array#push instead of direct assignment to add items to an array.
 
     ```javascript
-    var someStack = [];
+    var avengersTeam = [];
 
 
     // bad
-    someStack[someStack.length] = 'abracadabra';
+    avengersTeam[avengersTeam.length] = 'Thor';
 
     // good
-    someStack.push('abracadabra');
+    avengersTeam.push('Thor');
     ```
 
   - When you need to copy an array use Array#slice. [jsPerf](http://jsperf.com/converting-arguments-to-an-array/7)
 
     ```javascript
-    var len = items.length;
-    var itemsCopy = [];
+    var len = avengersTeam.length;
+    var avengersTeamCopy = [];
     var i;
 
     // bad
     for (i = 0; i < len; i++) {
-      itemsCopy[i] = items[i];
+      avengersTeamCopy[i] = avengersTeam[i];
     }
 
     // good
-    itemsCopy = items.slice();
+    avengersTeamCopy = avengersTeam.slice();
     ```
 
   - To convert an array-like object to an array, use Array#slice.
@@ -239,10 +239,10 @@
 
     ```javascript
     // bad
-    var name = "Bob Parr";
+    var name = "Anthony Edward Stark";
 
     // good
-    var name = 'Bob Parr';
+    var name = 'Anthony Edward Stark';
     ```
 
   - Strings longer than 80 characters should be written across multiple lines using string concatenation.
@@ -250,18 +250,18 @@
 
     ```javascript
     // bad
-    var errorMessage = 'This is a super long error that was thrown because of Batman. When you stop to think about how Batman had anything to do with this, you would get nowhere fast.';
+    var errorMessage = 'Wounded, captured and forced to build a weapon by his enemies, billionaire industrialist Tony Stark instead created an advanced suit of armor to save his life and escape captivity.';
 
     // bad
-    var errorMessage = 'This is a super long error that was thrown because \
-    of Batman. When you stop to think about how Batman had anything to do \
-    with this, you would get nowhere \
-    fast.';
+    var errorMessage = 'Wounded, captured and forced to build a weapon \
+    by his enemies, billionaire industrialist Tony Stark instead created an \
+    advanced suit of armor to save his life \
+    and escape captivity.';
 
     // good
-    var errorMessage = 'This is a super long error that was thrown because ' +
-      'of Batman. When you stop to think about how Batman had anything to do ' +
-      'with this, you would get nowhere fast.';
+    var errorMessage = 'Wounded, captured and forced to build a weapon ' +
+      'by his enemies, billionaire industrialist Tony Stark instead created an ' +
+      'advanced suit of armor to save his life and escape captivity.';
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -284,7 +284,7 @@
 
     // immediately-invoked function expression (IIFE)
     (function() {
-      console.log('Welcome to the Internet. Please follow me.');
+      console.log('Welcome to the age of Ultron!');
     })();
     ```
 
@@ -299,31 +299,31 @@
   - Use dot notation when accessing properties.
 
     ```javascript
-    var luke = {
-      jedi: true,
-      age: 28
+    var thor = {
+      useHammer: true,
+      realName: 'Thor Odinson'
     };
 
     // bad
-    var isJedi = luke['jedi'];
+    var useHammer = thor['useHammer'];
 
     // good
-    var isJedi = luke.jedi;
+    var useHammer = thor.useHammer;
     ```
 
   - Use subscript notation `[]` when accessing properties with a variable.
 
     ```javascript
-    var luke = {
-      jedi: true,
-      age: 28
+    var thor = {
+      useHammer: true,
+      realName: 'Thor Odinson'
     };
 
     function getProp(prop) {
-      return luke[prop];
+      return thor[prop];
     }
 
-    var isJedi = getProp('jedi');
+    var useHammer = getProp('useHammer');
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -361,12 +361,12 @@
     }
 
     // bad
-    if (collection.length > 0) {
+    if (marvelCollection.length > 0) {
       // ...stuff...
     }
 
     // good
-    if (collection.length) {
+    if (marvelCollection.length) {
       // ...stuff...
     }
     ```
@@ -474,12 +474,12 @@
 
     ```javascript
     // bad
-    // make() returns a new element
+    // newMarvelHero() returns a new element
     // based on the passed in tag name
     //
     // @param {String} tag
     // @return {Element} element
-    function make(tag) {
+    function newMarvelHero(tag) {
 
       // ...stuff...
 
@@ -488,13 +488,13 @@
 
     // good
     /**
-     * make() returns a new element
+     * newMarvelHero() returns a new element
      * based on the passed in tag name
      *
      * @param {String} tag
      * @return {Element} element
      */
-    function make(tag) {
+    function newMarvelHero(tag) {
 
       // ...stuff...
 
@@ -537,7 +537,7 @@
   - Use `// FIXME:` to annotate problems.
 
     ```javascript
-    function Calculator() {
+    function saveEarth() {
 
       // FIXME: shouldn't use a global here
       total = 0;
@@ -549,7 +549,7 @@
   - Use `// TODO:` to annotate solutions to problems.
 
     ```javascript
-    function Calculator() {
+    function saveEarth() {
 
       // TODO: total should be configurable by an options param
       this.total = 0;
@@ -587,24 +587,24 @@
     ```javascript
     // bad
     function test(){
-      console.log('test');
+      console.log('Marvel');
     }
 
     // good
     function test() {
-      console.log('test');
+      console.log('Marvel');
     }
 
     // bad
-    dog.set('attr',{
-      age: '1 year',
-      breed: 'Bernese Mountain Dog'
+    avenger.set('attr',{
+      age: '38',
+      name: 'Robert Bruce Banner'
     });
 
     // good
-    dog.set('attr', {
-      age: '1 year',
-      breed: 'Bernese Mountain Dog'
+    avenger.set('attr', {
+      age: '38',
+      name: 'Robert Bruce Banner'
     });
     ```
 
@@ -612,12 +612,12 @@
 
     ```javascript
     // bad
-    if(isJedi) {
+    if(isHulk) {
       fight ();
     }
 
     // good
-    if (isJedi) {
+    if (isHulk) {
       fight();
     }
 
@@ -726,18 +726,18 @@
     ];
 
     // bad
-    var hero = {
-        firstName: 'Bob'
-      , lastName: 'Parr'
-      , heroName: 'Mr. Incredible'
+    var avenger = {
+        firstName: 'Clinton'
+      , lastName: 'Barton'
+      , heroName: 'Hawkeye'
       , superPower: 'strength'
     };
 
     // good
-    var hero = {
-      firstName: 'Bob',
-      lastName: 'Parr',
-      heroName: 'Mr. Incredible',
+    var avenger = {
+      firstName: 'Clinton',
+      lastName: 'Barton',
+      heroName: 'Hawkeye',
       superPower: 'strength'
     };
     ```
@@ -748,25 +748,25 @@
 
     ```javascript
     // bad
-    var hero = {
-      firstName: 'Kevin',
-      lastName: 'Flynn',
+    var avenger = {
+      firstName: 'Clinton',
+      lastName: 'Barton',
     };
 
-    var heroes = [
-      'Batman',
-      'Superman',
+    var avengers = [
+      'Ironman',
+      'Thor',
     ];
 
     // good
-    var hero = {
-      firstName: 'Kevin',
-      lastName: 'Flynn'
+    var avenger = {
+      firstName: 'Clinton',
+      lastName: 'Barton'
     };
 
     var heroes = [
-      'Batman',
-      'Superman'
+      'Ironman',
+      'Thor'
     ];
     ```
 
@@ -780,19 +780,19 @@
     ```javascript
     // bad
     (function() {
-      var name = 'Skywalker'
+      var name = 'Stark'
       return name
     })()
 
     // good
     (function() {
-      var name = 'Skywalker';
+      var name = 'Stark';
       return name;
     })();
 
     // good (guards against the function becoming an argument when two files with IIFEs are concatenated)
     ;(function() {
-      var name = 'Skywalker';
+      var name = 'Stark';
       return name;
     })();
     ```
@@ -880,21 +880,21 @@
 
     ```javascript
     // bad
-    function user(options) {
+    function avenger(options) {
       this.name = options.name;
     }
 
-    var bad = new user({
+    var bad = new avenger({
       name: 'nope'
     });
 
     // good
-    function User(options) {
+    function Avenger(options) {
       this.name = options.name;
     }
 
-    var good = new User({
-      name: 'yup'
+    var good = new Avenger({
+      name: 'Tony Stark'
     });
     ```
 
@@ -902,11 +902,11 @@
 
     ```javascript
     // bad
-    this.__firstName__ = 'Panda';
-    this.firstName_ = 'Panda';
+    this.__firstName__ = 'Tony';
+    this.firstName_ = 'Tony';
 
     // good
-    this._firstName = 'Panda';
+    this._firstName = 'Tony';
     ```
 
   - When saving a reference to `this` use `_this`.
@@ -959,12 +959,12 @@
   - Assign methods to the prototype object, instead of overwriting the prototype with a new object. Overwriting the prototype makes inheritance impossible: by resetting the prototype you'll overwrite the base!
 
     ```javascript
-    function Jedi() {
-      console.log('new jedi');
+    function Hulk() {
+      console.log('new hulk');
     }
 
     // bad
-    Jedi.prototype = {
+    Hulk.prototype = {
       fight: function fight() {
         console.log('fighting');
       },
@@ -975,11 +975,11 @@
     };
 
     // good
-    Jedi.prototype.fight = function fight() {
+    Hulk.prototype.fight = function fight() {
       console.log('fighting');
     };
 
-    Jedi.prototype.block = function block() {
+    Hulk.prototype.block = function block() {
       console.log('blocking');
     };
     ```
@@ -988,33 +988,33 @@
 
     ```javascript
     // bad
-    Jedi.prototype.jump = function() {
+    Hulk.prototype.jump = function() {
       this.jumping = true;
       return true;
     };
 
-    Jedi.prototype.setHeight = function(height) {
+    Hulk.prototype.setHeight = function(height) {
       this.height = height;
     };
 
-    var luke = new Jedi();
-    luke.jump(); // => true
-    luke.setHeight(20); // => undefined
+    var hulk = new Hulk();
+    hulk.jump(); // => true
+    hulk.setHeight(20); // => undefined
 
     // good
-    Jedi.prototype.jump = function() {
+    Hulk.prototype.jump = function() {
       this.jumping = true;
       return this;
     };
 
-    Jedi.prototype.setHeight = function(height) {
+    Hulk.prototype.setHeight = function(height) {
       this.height = height;
       return this;
     };
 
-    var luke = new Jedi();
+    var hulk = new Hulk();
 
-    luke.jump()
+    hulk.jump()
       .setHeight(20);
     ```
 
