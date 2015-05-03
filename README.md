@@ -1,6 +1,6 @@
 [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/airbnb/javascript?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-# Airbnb JavaScript Style Guide() {
+# ACNS JavaScript Style Guide() {
 
 *A mostly reasonable approach to JavaScript*
 
@@ -13,7 +13,7 @@
   1. [Strings](#strings)
   1. [Functions](#functions)
   1. [Properties](#properties)
-  1. [Comparison Operators & Equality](#comparison-operators--equality)
+  1. [Operators](#operators)
   1. [Blocks](#blocks)
   1. [Comments](#comments)
   1. [Whitespace](#whitespace)
@@ -350,7 +350,7 @@
 
 **[⬆ back to top](#table-of-contents)**
 
-## Comparison Operators & Equality
+## Operators
 
   - Use `===` and `!==` over `==` and `!=`.
   - Comparison operators are evaluated using coercion with the `ToBoolean` method and always follow these simple rules:
@@ -392,6 +392,20 @@
       // ...stuff...
     }
     ```
+  - The `with` operator should not be used.
+  
+  - The ternary operator should be written as in the examples:
+  
+  ```javascript
+  var x = a ? b : c;
+  
+  var y = a ?
+      longButSimpleOperandB : longButSimpleOperandC;
+  
+  var z = a ?
+      moreComplicatedB :
+      moreComplicatedC;
+  ```
 
   - For more information see [Truth Equality and JavaScript](http://javascriptweblog.wordpress.com/2011/02/07/truth-equality-and-javascript/#more-2108) by Angus Croll.
 
