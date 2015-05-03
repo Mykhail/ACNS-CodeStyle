@@ -24,6 +24,10 @@
   1. [Constructors](#constructors)
   1. [Events](#events)
   1. [jQuery](#jquery)
+  1. [NS specific](#specific)
+      - [File Naming Conventions](#file-naming-conventions)
+      - [Arrays](#arrays)
+      - [Strings](#strings)
   1. [License](#license)
   
 
@@ -121,32 +125,6 @@
       return name;
     }
 
-    // bad - unnessary function call
-    function() {
-      var name = getName();
-
-      if (!arguments.length) {
-        return false;
-      }
-
-      this.setFirstName(name);
-
-      return true;
-    }
-
-    // good
-    function() {
-      var name;
-
-      if (!arguments.length) {
-        return false;
-      }
-
-      name = getName();
-      this.setFirstName(name);
-
-      return true;
-    }
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -1132,6 +1110,23 @@
     // good
     $sidebar.find('ul').hide();
     ```
+
+**[⬆ back to top](#table-of-contents)**
+
+##NS specific
+
+###File Naming Conventions
+
+   * Models: nameLikeThis.Model.js
+   * Views: nameLikeThis.View.js
+   * Collections: nameLikeThis.Collection.js
+   * Routers: nameLikeThis.Router
+   * Templates: name_like_this.txt
+   * Services:  name-like-this.ss
+   * Skins:  name-like-this.css
+   * SSP_libraries: NameLikeThis.js
+   * Suitelets:  NS_Name_Like_This.js
+   * SSP files: name-like-this.ssp
 
 **[⬆ back to top](#table-of-contents)**
 
