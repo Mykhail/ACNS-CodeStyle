@@ -2,7 +2,7 @@
 
 # ACNS JavaScript Style Guide() {
 
-*A mostly reasonable approach to JavaScript*
+*Good codestyle increase your testosterone level*
 
 
 ## Table of Contents
