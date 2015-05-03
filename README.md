@@ -7,12 +7,12 @@
 
 ## Table of Contents
 
+  1. [Variables](#variables)
   1. [Objects](#objects)
   1. [Arrays](#arrays)
   1. [Strings](#strings)
   1. [Functions](#functions)
   1. [Properties](#properties)
-  1. [Variables](#variables)
   1. [Comparison Operators & Equality](#comparison-operators--equality)
   1. [Blocks](#blocks)
   1. [Comments](#comments)
@@ -25,6 +25,133 @@
   1. [Events](#events)
   1. [jQuery](#jquery)
   1. [License](#license)
+  
+
+## Variables
+
+  - Always use `var` to declare variables. Not doing so will result in global variables.
+  **Polluting the global namespace reduces your testosterone level.**
+
+    ```javascript
+    // bad
+    superPower = new SuperPower();
+
+    // good
+    var superPower = new SuperPower();
+    ```
+
+  - Use one `var` declaration per variable.
+    It's easier to add new variable declarations this way, and you never have
+    to worry about swapping out a `;` for a `,` or introducing punctuation-only
+    diffs.
+
+    ```javascript
+    // bad
+    var items = getItems(),
+        goSportsTeam = true,
+        dragonball = 'z';
+
+    // bad
+    // (compare to above, and try to spot the mistake)
+    var items = getItems(),
+        goSportsTeam = true;
+        dragonball = 'z';
+
+    // good
+    var items = getItems();
+    var goSportsTeam = true;
+    var dragonball = 'z';
+    ```
+
+  - Declare unassigned variables last. This is helpful when later on you might need to assign a variable depending on one of the previous assigned variables.
+
+    ```javascript
+    // bad
+    var i, len, dragonball,
+        items = getItems(),
+        goSportsTeam = true;
+
+    // bad
+    var i;
+    var items = getItems();
+    var dragonball;
+    var goSportsTeam = true;
+    var len;
+
+    // good
+    var items = getItems();
+    var goSportsTeam = true;
+    var dragonball;
+    var length;
+    var i;
+    ```
+
+  - Assign variables at the top of their scope. This helps avoid issues with variable declaration and assignment hoisting related issues.
+
+    ```javascript
+    // bad
+    function() {
+      test();
+      console.log('doing stuff..');
+
+      //..other stuff..
+
+      var name = getName();
+
+      if (name === 'test') {
+        return false;
+      }
+
+      return name;
+    }
+
+    // good
+    function() {
+      var name = getName();
+
+      test();
+      console.log('doing stuff..');
+
+      //..other stuff..
+
+      if (name === 'test') {
+        return false;
+      }
+
+      return name;
+    }
+
+    // bad - unnessary function call
+    function() {
+      var name = getName();
+
+      if (!arguments.length) {
+        return false;
+      }
+
+      this.setFirstName(name);
+
+      return true;
+    }
+
+    // good
+    function() {
+      var name;
+
+      if (!arguments.length) {
+        return false;
+      }
+
+      name = getName();
+      this.setFirstName(name);
+
+      return true;
+    }
+    ```
+
+**[⬆ back to top](#table-of-contents)**
+
+
 
 ## Objects
 
@@ -223,131 +350,6 @@
 
 **[⬆ back to top](#table-of-contents)**
 
-
-## Variables
-
-  - Always use `var` to declare variables. Not doing so will result in global variables. We want to avoid polluting the global namespace. Captain Planet warned us of that.
-
-    ```javascript
-    // bad
-    superPower = new SuperPower();
-
-    // good
-    var superPower = new SuperPower();
-    ```
-
-  - Use one `var` declaration per variable.
-    It's easier to add new variable declarations this way, and you never have
-    to worry about swapping out a `;` for a `,` or introducing punctuation-only
-    diffs.
-
-    ```javascript
-    // bad
-    var items = getItems(),
-        goSportsTeam = true,
-        dragonball = 'z';
-
-    // bad
-    // (compare to above, and try to spot the mistake)
-    var items = getItems(),
-        goSportsTeam = true;
-        dragonball = 'z';
-
-    // good
-    var items = getItems();
-    var goSportsTeam = true;
-    var dragonball = 'z';
-    ```
-
-  - Declare unassigned variables last. This is helpful when later on you might need to assign a variable depending on one of the previous assigned variables.
-
-    ```javascript
-    // bad
-    var i, len, dragonball,
-        items = getItems(),
-        goSportsTeam = true;
-
-    // bad
-    var i;
-    var items = getItems();
-    var dragonball;
-    var goSportsTeam = true;
-    var len;
-
-    // good
-    var items = getItems();
-    var goSportsTeam = true;
-    var dragonball;
-    var length;
-    var i;
-    ```
-
-  - Assign variables at the top of their scope. This helps avoid issues with variable declaration and assignment hoisting related issues.
-
-    ```javascript
-    // bad
-    function() {
-      test();
-      console.log('doing stuff..');
-
-      //..other stuff..
-
-      var name = getName();
-
-      if (name === 'test') {
-        return false;
-      }
-
-      return name;
-    }
-
-    // good
-    function() {
-      var name = getName();
-
-      test();
-      console.log('doing stuff..');
-
-      //..other stuff..
-
-      if (name === 'test') {
-        return false;
-      }
-
-      return name;
-    }
-
-    // bad - unnessary function call
-    function() {
-      var name = getName();
-
-      if (!arguments.length) {
-        return false;
-      }
-
-      this.setFirstName(name);
-
-      return true;
-    }
-
-    // good
-    function() {
-      var name;
-
-      if (!arguments.length) {
-        return false;
-      }
-
-      name = getName();
-      this.setFirstName(name);
-
-      return true;
-    }
-    ```
-
-**[⬆ back to top](#table-of-contents)**
-
-
 ## Comparison Operators & Equality
 
   - Use `===` and `!==` over `==` and `!=`.
@@ -397,6 +399,32 @@
 
 
 ## Blocks
+
+  - The opening curly brace should be on the same line and separated with one space character:
+
+    ```javascript
+    // bad
+    if (test){
+    // ...
+    }
+    
+    // bad
+    function foo() 
+    {
+        // ...
+    }
+    
+    // good
+    if (test) {
+        // ...
+    }
+    
+    // good
+    function foo() {
+        // ...
+    }
+    
+    ```
 
   - Use braces with all multi-line blocks.
 
@@ -755,7 +783,7 @@
 
 ## Semicolons
 
-  - **Yup.**
+  - **Statements should always end with a semicolon.**
 
     ```javascript
     // bad
