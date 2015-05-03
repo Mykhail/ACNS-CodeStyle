@@ -34,7 +34,6 @@
 ## Variables
 
   - Always use `var` to declare variables. Not doing so will result in global variables.
-  **Polluting the global namespace reduces your testosterone level.**
 
     ```javascript
     // bad
