@@ -26,8 +26,8 @@
   1. [jQuery](#jquery)
   1. [NS specific](#specific)
       - [File Naming Conventions](#file-naming-conventions)
-      - [Arrays](#arrays)
-      - [Strings](#strings)
+      - [Backbone Coding Standards](#backbone-coding-standards)
+      - [NS Best Practices](#ns-best-practices)
   1. [License](#license)
   
 
@@ -1127,7 +1127,28 @@
    * SSP_libraries: NameLikeThis.js
    * Suitelets:  NS_Name_Like_This.js
    * SSP files: name-like-this.ssp
+   
+**[⬆ back to top](#table-of-contents)**
 
+###Backbone Coding Standards
+  - Use less logic in the templates.
+  - Minimize manual jQuery DOM manipulation, the DOM fragments should be rendered through the View objects.
+  - All dependencies must go through RequireJS require() or define() functions. No global state.
+  - A common anti-pattern is to put class definitions like views, models, collections etc inside these blocks. They   are not necessary.
+  Try to Avoid this:
+
+    ```javascript
+    $(function() {
+      App.ProductView = Backbone.View.extend({
+        ...
+      });
+    });
+    ```
+
+**[⬆ back to top](#table-of-contents)**
+
+###NS Best Practices
+  - Use utf-8 for templates.
 **[⬆ back to top](#table-of-contents)**
 
 ## License
