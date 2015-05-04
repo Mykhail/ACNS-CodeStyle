@@ -15,6 +15,7 @@
   1. [Properties](#properties)
   1. [Operators](#operators)
   1. [Blocks](#blocks)
+  1. [Conditional Statements](#conditional-statements)
   1. [Comments](#comments)
   1. [Whitespace](#whitespace)
   1. [Commas](#commas)
@@ -466,6 +467,91 @@
 
 **[⬆ back to top](#table-of-contents)**
 
+## Conditional Statements
+
+  - The `else` keyword should be on the same line as the closing brace of the if-part of the statement:
+
+    ```javascript
+        
+    //bad
+    if (test) {
+    // ...
+    } 
+    else {
+        // ...
+    }
+    
+    //good
+    if (test) {
+        // ...
+    } else {
+        // ...
+    }
+
+    ```
+  - Condition statements should not contain assignment operations:
+    
+    ```javascript
+    //bad
+    var foo;
+    if ((foo = bar()) > 0) {
+        // ...
+    }
+    
+    //good
+    var foo = bar();
+    if (foo > 0) {
+        // ...
+    }
+
+    ```
+    
+  - Conditions longer than the [maximum line length](#general) should be divided as in the example:
+    
+    ```javascript
+    if (longCondition ||
+        anotherLongCondition &&
+        yetAnotherLongCondition
+    ) {
+        // ...
+    }
+    ```
+    
+  - [Yoda conditions](http://en.wikipedia.org/wiki/Yoda_conditions) should not be used:
+    
+    ```javascript
+    //bad
+    if ('driving' === getType()) {
+    
+    }
+    
+    //good
+    if (getType() === 'driving') {
+    
+    }
+    ```
+
+  -  The switch statement should be written as in the example:
+    
+    ```javascript
+    switch (value) {
+        case 1:
+            // ...
+            break;
+    
+        case 2:
+            // ...
+            break;
+    
+        default:
+            // ...
+            // no break keyword on the last case
+    }
+    ```
+    
+
+
+**[⬆ back to top](#table-of-contents)**
 
 ## Comments
 
