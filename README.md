@@ -1219,7 +1219,7 @@
    * Services:  name-like-this.ss
    * Skins:  name-like-this.css
    * SSP_libraries: NameLikeThis.js
-   * Suitelets:  NS_Name_Like_This.js
+   * Suitelets:  moduleName_suitescripttype_suitescriptName.js
    * SSP files: name-like-this.ssp
    
 **[⬆ back to top](#table-of-contents)**
