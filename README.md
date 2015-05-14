@@ -244,26 +244,7 @@
     // good
     var name = 'Anthony Edward Stark';
     ```
-
-  - Strings longer than 80 characters should be written across multiple lines using string concatenation.
-  - Note: If overused, long strings with concatenation could impact performance. [jsPerf](http://jsperf.com/ya-string-concat) & [Discussion](https://github.com/airbnb/javascript/issues/40).
-
-    ```javascript
-    // bad
-    var errorMessage = 'Wounded, captured and forced to build a weapon by his enemies, billionaire industrialist Tony Stark instead created an advanced suit of armor to save his life and escape captivity.';
-
-    // bad
-    var errorMessage = 'Wounded, captured and forced to build a weapon \
-    by his enemies, billionaire industrialist Tony Stark instead created an \
-    advanced suit of armor to save his life \
-    and escape captivity.';
-
-    // good
-    var errorMessage = 'Wounded, captured and forced to build a weapon ' +
-      'by his enemies, billionaire industrialist Tony Stark instead created an ' +
-      'advanced suit of armor to save his life and escape captivity.';
-    ```
-
+    
 **[⬆ back to top](#table-of-contents)**
 
 
@@ -318,12 +299,9 @@
       useHammer: true,
       realName: 'Thor Odinson'
     };
-
-    function getProp(prop) {
-      return thor[prop];
-    }
-
-    var useHammer = getProp('useHammer');
+    
+    var prop = 'useHammer'
+    var useHammer = thor[prop];
     ```
 
 **[⬆ back to top](#table-of-contents)**
@@ -648,12 +626,12 @@
 
 ## Whitespace
 
-  - Use soft tabs set to 2 spaces.
+  - Use soft tabs set to 4 spaces.
 
     ```javascript
     // bad
     function() {
-    ∙∙∙∙var name;
+    ∙∙var name;
     }
 
     // bad
@@ -663,7 +641,7 @@
 
     // good
     function() {
-    ∙∙var name;
+    ∙∙∙∙var name;
     }
     ```
 
@@ -994,14 +972,14 @@
     this._firstName = 'Tony';
     ```
 
-  - When saving a reference to `this` use `_this`.
+  - When saving a reference to `this` use `self`.
 
     ```javascript
     // bad
     function() {
-      var self = this;
+      var _this = this;
       return function() {
-        console.log(self);
+        console.log(_this);
       };
     }
 
@@ -1015,9 +993,9 @@
 
     // good
     function() {
-      var _this = this;
+      var self = this;
       return function() {
-        console.log(_this);
+        console.log(self);
       };
     }
     ```
@@ -1214,7 +1192,7 @@
    * Models: nameLikeThis.Model.js
    * Views: nameLikeThis.View.js
    * Collections: nameLikeThis.Collection.js
-   * Routers: nameLikeThis.Router
+   * Routers: nameLikeThis.Router.js
    * Templates: name_like_this.txt
    * Services:  name-like-this.ss
    * Skins:  name-like-this.css
@@ -1228,17 +1206,7 @@
   - Use less logic in the templates.
   - Minimize manual jQuery DOM manipulation, the DOM fragments should be rendered through the View objects.
   - All dependencies must go through RequireJS require() or define() functions. No global state.
-  - A common anti-pattern is to put class definitions like views, models, collections etc inside these blocks. They   are not necessary.
-  Try to Avoid this:
-
-    ```javascript
-    $(function() {
-      App.ProductView = Backbone.View.extend({
-        ...
-      });
-    });
-    ```
-
+  
 **[⬆ back to top](#table-of-contents)**
 
 ###NS Best Practices
