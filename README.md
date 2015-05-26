@@ -1215,8 +1215,7 @@
   - Require module exports
   ```
   //Bad
-SC.Application('Shopping').on('beforeStart', function() {
-    require(['Facets.Router', 'Facets.Views', 'Facets.Helper'], function(FacetsRouter, FacetsViews, FacetsHelper) {
+SC.Application('Shopping').on('beforeStart', function() {require(['Facets.Router', 'Facets.Views', 'Facets.Helper'], function(FacetsRouter, FacetsViews, FacetsHelper) {
     
   //Good
 SC.Application('Shopping').on('beforeStart', function() {
