@@ -1211,7 +1211,33 @@
 
 ###NS Best Practices
   - Use utf-8 for templates.
-  - 
+  
+  - Require module exports
+  ```
+  //Bad
+SC.Application('Shopping').on('beforeStart', function() {
+    require(['Facets.Router', 'Facets.Views', 'Facets.Helper'], function(FacetsRouter, FacetsViews, FacetsHelper) {
+    
+  //Good
+SC.Application('Shopping').on('beforeStart', function() {
+    require(['Facets.Router', 'Facets.Views', 'Facets.Helper'], 
+        function(FacetsRouter, FacetsViews, FacetsHelper) {
+  ```
+  
+  - Require module exports naming
+    - Function arguments for module value should have same name(without dots)
+    ```
+  //Bad
+SC.Application('Shopping').on('beforeStart', function() {
+    require(['Facets.Router', 'Facets.Views', 'Facets.Helper'], 
+        function(Router, View, Helper) {
+    
+  //Good
+SC.Application('Shopping').on('beforeStart', function() {
+    require(['Facets.Router', 'Facets.Views', 'Facets.Helper'], 
+        function(FacetsRouter, FacetsViews, FacetsHelper) {
+  ```
+  
 **[⬆ back to top](#table-of-contents)**
 
 ## License
