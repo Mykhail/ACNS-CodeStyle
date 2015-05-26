@@ -1212,6 +1212,15 @@
 ###NS Best Practices
   - Use utf-8 for templates.
   
+  - Use underscore "extend" for prototype extending
+  ```
+  //Bad
+  FacetsRouter.prototype.facetLoading = function() {
+  //Good
+  _.extend(FacetsRouter.prototype, { facetLoading: function() {
+  ```
+  
+
   - Require module exports
   ```
   //Bad
@@ -1236,6 +1245,7 @@ SC.Application('Shopping').on('beforeStart', function() {
     require(['Facets.Router', 'Facets.Views', 'Facets.Helper'], 
         function(FacetsRouter, FacetsViews, FacetsHelper) {
   ```
+  
   
 **[⬆ back to top](#table-of-contents)**
 
