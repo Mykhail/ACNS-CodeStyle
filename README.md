@@ -1224,7 +1224,7 @@ SC.Application('Shopping').on('beforeStart', function() {
   ```
   
   - Require module exports naming
-    - Function arguments for module value should have same name(without dots)
+    - Function arguments for module value should have the same name (without dots)
     ```
   //Bad
 SC.Application('Shopping').on('beforeStart', function() {
