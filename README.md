@@ -1229,7 +1229,7 @@ SC.Application('Shopping').on('beforeStart', function() {require(['Facets.Router
   //Good
 SC.Application('Shopping').on('beforeStart', function() {
     require(['Facets.Router', 'Facets.Views', 'Facets.Helper'], 
-        function(FacetsRouter, FacetsViews, FacetsHelper) {
+    function(FacetsRouter, FacetsViews, FacetsHelper) {
   ```
   
   - Require module exports naming
@@ -1238,12 +1238,12 @@ SC.Application('Shopping').on('beforeStart', function() {
   //Bad
 SC.Application('Shopping').on('beforeStart', function() {
     require(['Facets.Router', 'Facets.Views', 'Facets.Helper'], 
-        function(Router, View, Helper) {
+    function(Router, View, Helper) {
     
   //Good
 SC.Application('Shopping').on('beforeStart', function() {
     require(['Facets.Router', 'Facets.Views', 'Facets.Helper'], 
-        function(FacetsRouter, FacetsViews, FacetsHelper) {
+    function(FacetsRouter, FacetsViews, FacetsHelper) {
   ```
   
   
